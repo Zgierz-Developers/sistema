@@ -31,7 +31,6 @@ public class Sistema implements ModInitializer {
 
 		Block block = new BlockDashboard(settings);
 
-
 		Registry.register(Registries.BLOCK, key, block);
 		Registry.register(Registries.ITEM, keyItem, new BlockItem(block, new Item.Settings().registryKey(keyItem)));
 	}
