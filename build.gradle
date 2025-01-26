@@ -76,23 +76,21 @@ jar {
 	}
 }
 
-// Run the minecraft auth task if the account details are present
-try {
-	def ACCOUNT_REFRESH_TOKEN = System.getenv('MINECRAFT_ACCOUNT_REFRESH_TOKEN')
-	def ACCOUNT_UUID = System.getenv('MINECRAFT_ACCOUNT_UUID')
-	def ACCOUNT_NAME = System.getenv('MINECRAFT_ACCOUNT_NAME')
-	println("Found account details, setting up minecraft run tasks")
-	println("Account name: ${ACCOUNT_NAME}")
-	println("Account UUID: ${ACCOUNT_UUID}")
-	println("Account refresh token: ${ACCOUNT_REFRESH_TOKEN}")
 
+
+// run the game with the following credentials (Minecraft Account), System ENV, If you are contributing to the project, you can use your own credentials
+var account_name = "$System.env.MINECRAFT_ACCOUNT_NAME"
+var refesh_token = "$System.env.MINECRAFT_ACCOUNT_REFRESH_TOKEN"
+var uuid = "$System.env.MINECRAFT_ACCOUNT_UUID"
+
+if (account_name != null && refesh_token != null && uuid != null) {
 	runClient {
-		args '--username', ACCOUNT_NAME , '--uuid', ACCOUNT_UUID, '--accessToken', ACCOUNT_REFRESH_TOKEN
+		args '--username', account_name , '--uuid', uuid, '--accessToken', refesh_token
 	}
-
-} catch (ignored) {
-	println("No account details found, skipping mojang account setup")
+} else {
+	println("No Minecraft Account credentials found, please add them to your system environment variables. Skipping args")
 }
+
 
 
 

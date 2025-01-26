@@ -1,24 +1,38 @@
 package com.fairdev.sistema;
 
+import com.fairdev.sistema.blocks.BlockDashboard;
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Sistema implements ModInitializer {
 	public static final String MOD_ID = "sistema";
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
+	// Logger for debugging
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		Identifier id = Identifier.of(MOD_ID, "test_block");
+		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
+		RegistryKey<Item> keyItem = RegistryKey.of(RegistryKeys.ITEM, id);
 
-		LOGGER.info("Hello Fabric world!");
+		Block.Settings settings = AbstractBlock.Settings.create().registryKey(key);
+
+		Block block = new BlockDashboard(settings);
+
+
+		Registry.register(Registries.BLOCK, key, block);
+		Registry.register(Registries.ITEM, keyItem, new BlockItem(block, new Item.Settings().registryKey(keyItem)));
 	}
 }
