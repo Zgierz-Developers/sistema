@@ -17,4 +17,27 @@ import net.minecraft.util.Identifier;
 
 public class SistemaBlocks {
 
+    public static final Block DASHBOARD = registerBlock("dashboard",
+            new BlockDashboard(AbstractBlock.Settings.create().registryKey( // AbstractBlock.Settings
+                    RegistryKey.of(RegistryKeys.BLOCK, // RegistryKey
+                            Identifier.of(Sistema.MOD_ID, "dashboard"))).strength(4f).requiresTool().sounds(BlockSoundGroup.AMETHYST_BLOCK)), new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Sistema.MOD_ID, "dashboard"))));
+
+
+    private static Block registerBlockWithoutBlockItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, Identifier.of(Sistema.MOD_ID, name), block);
+    }
+
+    private static Block registerBlock(String name, Block block, Item.Settings settings) {
+        registerBlockItem(name, block, settings);
+        return Registry.register(Registries.BLOCK, Identifier.of(Sistema.MOD_ID, name), block);
+    }
+
+    private static void registerBlockItem(String name, Block block, Item.Settings settings) {
+        Registry.register(Registries.ITEM, Identifier.of(Sistema.MOD_ID, name),
+                new BlockItem(block, settings));
+    }
+
+    public static void InitializeSistemaBlocks() {
+        Sistema.LOGGER.info("Registering Mod Blocks for " + Sistema.MOD_ID);
+    }
 }

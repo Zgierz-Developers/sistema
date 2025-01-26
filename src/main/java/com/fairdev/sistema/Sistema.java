@@ -1,6 +1,7 @@
 package com.fairdev.sistema;
 
 import com.fairdev.sistema.blocks.BlockDashboard;
+import com.fairdev.sistema.blocks.SistemaBlocks;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
@@ -23,15 +24,7 @@ public class Sistema implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Identifier id = Identifier.of(MOD_ID, "test_block");
-		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
-		RegistryKey<Item> keyItem = RegistryKey.of(RegistryKeys.ITEM, id);
-
-		Block.Settings settings = AbstractBlock.Settings.create().registryKey(key);
-
-		Block block = new BlockDashboard(settings);
-
-		Registry.register(Registries.BLOCK, key, block);
-		Registry.register(Registries.ITEM, keyItem, new BlockItem(block, new Item.Settings().registryKey(keyItem)));
+		// Initialize the blocks
+		SistemaBlocks.InitializeSistemaBlocks();
 	}
 }
