@@ -20,7 +20,7 @@ public class SistemaBlocks {
     public static final Block DASHBOARD = registerBlock("dashboard",
             new BlockDashboard(AbstractBlock.Settings.create().registryKey( // AbstractBlock.Settings
                     RegistryKey.of(RegistryKeys.BLOCK, // RegistryKey
-                            Identifier.of(Sistema.MOD_ID, "dashboard"))).strength(4f).requiresTool().sounds(BlockSoundGroup.AMETHYST_BLOCK)), new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Sistema.MOD_ID, "dashboard"))));
+                            Identifier.of(Sistema.MOD_ID, "dashboard"))).sounds(BlockSoundGroup.METAL)), new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Sistema.MOD_ID, "dashboard"))));
 
 
     private static Block registerBlockWithoutBlockItem(String name, Block block) {
