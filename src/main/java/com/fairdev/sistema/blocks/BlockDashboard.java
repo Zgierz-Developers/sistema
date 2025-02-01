@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class BlockDashboard extends BlockWithEntity implements BlockEntityProvider {
 
-    public static ArrayList<ItemStack> items;
+
 
     public BlockDashboard(Settings settings) {
         super(settings);

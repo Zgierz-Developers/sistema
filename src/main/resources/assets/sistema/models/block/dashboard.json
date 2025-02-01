@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "sistema:block/dashboard",
+    "down": "sistema:block/down_dashboard",
+    "up": "sistema:block/top_dashboard",
+    "north": "sistema:block/righy_dashboard",
+    "south": "sistema:block/left_dashboard",
+    "west": "sistema:block/front_dashboard",
+    "east": "sistema:block/back_dashboard"
+  }
+}
