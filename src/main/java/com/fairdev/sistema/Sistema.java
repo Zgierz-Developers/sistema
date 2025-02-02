@@ -1,7 +1,6 @@
 package com.fairdev.sistema;
 
-import com.fairdev.sistema.blocks.BlockDashboard;
-import com.fairdev.sistema.blocks.SistemaBlocks;
+import com.fairdev.sistema.block.SistemaBlocks;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

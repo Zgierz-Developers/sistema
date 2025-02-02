@@ -1,4 +1,4 @@
-package com.fairdev.sistema.blocks;
+package com.fairdev.sistema.block;
 
 import net.minecraft.block.Block;
 

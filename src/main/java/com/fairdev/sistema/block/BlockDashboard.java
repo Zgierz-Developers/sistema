@@ -1,26 +1,20 @@
-package com.fairdev.sistema.blocks;
+package com.fairdev.sistema.block;
 
+import com.fairdev.sistema.blockentity.EntityDashboard;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class BlockDashboard extends BlockWithEntity implements BlockEntityProvider {
+public class BlockDashboard extends Block implements BlockEntityProvider {
 
 
 
@@ -37,7 +31,7 @@ public class BlockDashboard extends BlockWithEntity implements BlockEntityProvid
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
+        return new EntityDashboard(pos, state);
     }
 
     @Override
@@ -55,6 +49,4 @@ public class BlockDashboard extends BlockWithEntity implements BlockEntityProvid
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         return super.onBreak(world, pos, state, player);
     }
-
-
 }
